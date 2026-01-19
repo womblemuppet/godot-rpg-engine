@@ -1,0 +1,17 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dh48xekq5we0f"]
+
+[ext_resource type="Texture2D" uid="uid://dh7l4bcclt7aj" path="res://assets/tilesets/test_atlas.png" id="1_rlrdu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlrdu"]
+texture = ExtResource("1_rlrdu")
+texture_region_size = Vector2i(120, 120)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60, -60, 60, -60, 60, 60, -60, 60)
+0:0/0 = 0
+0:1/0 = 0
+1:0/0 = 0
+
+[resource]
+tile_size = Vector2i(120, 120)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_rlrdu")
