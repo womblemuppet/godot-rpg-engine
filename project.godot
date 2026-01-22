@@ -17,7 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Stats="*res://stats/stats.tscn"
+ResourceManager="*res://stats/resource_manager.tscn"
+CharacterManager="*res://stats/character_manager.tscn"
+SaveManager="*res://stats/save_manager.tscn"
+YAML="*res://addons/miniyaml/miniyaml.gd"
 
 [display]
 
@@ -25,3 +28,7 @@ window/size/viewport_width=2560
 window/size/viewport_height=1440
 window/size/resizable=false
 window/size/borderless=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/miniyaml/plugin.cfg")

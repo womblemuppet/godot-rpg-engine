@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_c3csk")
-id = 1
+id = 2
 name = "bertha"
 base_hp = 50
 base_attack = 6
