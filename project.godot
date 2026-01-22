@@ -21,6 +21,7 @@ ResourceManager="*res://stats/resource_manager.tscn"
 CharacterManager="*res://stats/character_manager.tscn"
 SaveManager="*res://stats/save_manager.tscn"
 YAML="*res://addons/miniyaml/miniyaml.gd"
+SceneManager="*res://scene_manager.tscn"
 
 [display]
 
