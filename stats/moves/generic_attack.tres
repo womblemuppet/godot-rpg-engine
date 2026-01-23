@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cedis82ghduxf"]
+
+[ext_resource type="Script" uid="uid://3l02i7r88ttq" path="res://stats/moves/generic_attack.gd" id="1_pf85w"]
+
+[resource]
+script = ExtResource("1_pf85w")
+metadata/_custom_type_script = "uid://owibg3uce7t0"

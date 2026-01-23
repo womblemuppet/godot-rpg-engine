@@ -9,5 +9,5 @@ func _ready():
     item_types[item_type.id] = item_type
 
 func get_item_type(item_id):
-  print("getting item type with id %s" % item_id)
+  assert(item_types[item_id], "Unknown item type %s" % item_id)
   return item_types[item_id]

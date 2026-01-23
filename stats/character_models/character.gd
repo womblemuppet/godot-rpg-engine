@@ -19,6 +19,8 @@ var held_armour: Dictionary[ArmourSlot, Item]
 enum WeaponSlot { WEAPON_MAIN, WEAPON_OFFHAND }
 var held_weapons: Dictionary[WeaponSlot, Item]
 
+var movelist: Array[MoveType] = []
+
 func init(character_data):
   hp = character_data.hp
   status = character_data.status
@@ -28,16 +30,23 @@ func init(character_data):
   conf = character_data.conf
   hung = character_data.hung
   
-  for armour_slot in character_data.held_armour:
-    var armour = character_data.held_armour[armour_slot] # this will error?
+  for armour_slot: ArmourSlot in character_data.held_armour:
+    var armour = character_data.held_armour[armour_slot]
     if armour:
       var new_armour = Item.new()
       new_armour.init(armour)
       hold_armour(new_armour, armour_slot)
-    
-      
-  #held_weapons = character_data.head_weapons
 
+  for weapon_slot: WeaponSlot in character_data.held_weapons:
+    var weapon = character_data.held_weapons[weapon_slot]
+    if weapon:
+      var new_weapon = Item.new()
+      new_weapon.init(weapon)
+      hold_weapon(new_weapon, weapon_slot)
+      
+  for move_type: MoveType in character_data.movelist:
+    movelist.push_front(move_type)
+      
 func to_dictionary():
   var held_armour_dict = {}
   

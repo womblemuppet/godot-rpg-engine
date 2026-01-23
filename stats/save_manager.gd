@@ -31,7 +31,3 @@ func load_game():
   for key in loaded_data:
     # key atm is just each character id
     CharacterManager.create_character(loaded_data[key])
-      
-  print("loading finished")
-  print("characters:")
-  print(CharacterManager.characters)
