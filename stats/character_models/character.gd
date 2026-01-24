@@ -24,6 +24,7 @@ var held_weapons: Dictionary[WeaponSlot, Item]
 var movelist: Array[MoveType] = []
 
 func init(character_data):
+  type = character_data.type
   hp = character_data.hp
   status = character_data.status
   insp = character_data.insp
@@ -69,6 +70,7 @@ func to_dictionary():
       held_weapon_dict[weapon_slot] = null
   
   var dictionary = {
+    "type": type,
     "hp": hp,
     "status": status,
     "insp": insp,

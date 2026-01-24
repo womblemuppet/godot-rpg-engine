@@ -11,7 +11,7 @@ func _ready():
 func save_game():
   var save_file = FileAccess.open(save_path, FileAccess.WRITE)
   
-  var combine_characters_into_dictionary = func(acc, character):
+  var combine_characters_into_dictionary = func(acc, character: Character):
     acc[character.type.id] = character.to_dictionary()
     return acc
     
@@ -30,4 +30,8 @@ func load_game():
   
   for key in loaded_data:
     # key atm is just each character id
-    CharacterManager.create_character(loaded_data[key])
+    var character_data = loaded_data[key]
+    var character_type = ResourceManager.get_character_type(character_data.type)
+    character_data["type"] = character_type
+    
+    CharacterManager.create_character(character_data)
