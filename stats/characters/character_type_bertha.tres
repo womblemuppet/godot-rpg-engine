@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_c3csk")
 id = 2
-name = "bertha"
+display_name = "Bertha"
 base_hp = 50
 base_attack = 6
 metadata/_custom_type_script = "uid://3on47uvjmj6w"

@@ -8,6 +8,7 @@ func create_character(character_data):
   
   characters.push_back(new_character)
   
-
+func get_characters():
+  return characters
     
     

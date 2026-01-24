@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8qiirxwbcdvb"]
 
-[ext_resource type="Script" uid="uid://dr5qllo3phxua" path="res://overworld/encounter_models/encounter.gd" id="1_sb72x"]
+[ext_resource type="Script" uid="uid://dr5qllo3phxua" path="res://overworld/encounter.gd" id="1_sb72x"]
 [ext_resource type="Texture2D" uid="uid://b0r3k78x0njt1" path="res://assets/sprites/wild_boar.png" id="2_rq6jx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq6jx"]

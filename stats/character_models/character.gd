@@ -1,6 +1,8 @@
 class_name Character
 extends Node
 
+@onready var fighter_scene = preload("uid://0wuliejp0ovh")
+
 var type: CharacterType
 
 var hp: int
@@ -76,9 +78,26 @@ func to_dictionary():
     "hung": hung,
     "held_armour": held_armour_dict,
     "held_weapons": held_weapon_dict,
+    "movelist": movelist
   }
   
   return dictionary
+
+func to_fighter():
+  var new_fighter = fighter_scene.instantiate()
+  
+  new_fighter.init(
+    {
+      "display_name": type.display_name,
+      "hp": hp,
+      "attack": type.base_attack,
+      "status": status,
+      "movelist": movelist,
+      "fight_sprites": type.fight_sprites,
+    }
+  )
+  
+  return new_fighter
 
 func hold_armour(item: Item, item_slot: ArmourSlot):
   held_armour[item_slot] = item

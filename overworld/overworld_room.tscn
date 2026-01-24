@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bttjqj2x31r51" path="res://overworld/player.tscn" id="1_sytrv"]
 [ext_resource type="PackedScene" uid="uid://cqi18ir5o0su7" path="res://assets/tilemaps/room_one_tilemaplayer.tscn" id="2_52wqg"]
-[ext_resource type="PackedScene" uid="uid://b8qiirxwbcdvb" path="res://overworld/encounter_models/encounter.tscn" id="3_52wqg"]
+[ext_resource type="PackedScene" uid="uid://b8qiirxwbcdvb" path="res://overworld/encounter.tscn" id="3_52wqg"]
 
 [node name="OverworldRoom" type="Node2D"]
 
