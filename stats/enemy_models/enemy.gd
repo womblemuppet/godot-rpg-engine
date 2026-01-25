@@ -1,7 +1,6 @@
 class_name Enemy
 extends Node
 
-@onready var fighter_scene = preload("uid://0wuliejp0ovh")
 
 var type: EnemyType
 
@@ -9,6 +8,7 @@ func init(p_type: EnemyType):
   type = p_type
 
 func to_fighter():
+  var fighter_scene = preload("uid://0wuliejp0ovh")
   var new_fighter = fighter_scene.instantiate()
   
   new_fighter.init(

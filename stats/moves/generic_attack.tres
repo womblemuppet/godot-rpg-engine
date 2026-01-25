@@ -1,7 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cedis82ghduxf"]
+[gd_resource type="Resource" script_class="MoveType" load_steps=3 format=3 uid="uid://cedis82ghduxf"]
 
 [ext_resource type="Script" uid="uid://3l02i7r88ttq" path="res://stats/moves/generic_attack.gd" id="1_pf85w"]
+[ext_resource type="Script" uid="uid://owibg3uce7t0" path="res://stats/move_models/move_type.gd" id="2_v7lq1"]
 
 [resource]
-script = ExtResource("1_pf85w")
+script = ExtResource("2_v7lq1")
+effect = ExtResource("1_pf85w")
 metadata/_custom_type_script = "uid://owibg3uce7t0"

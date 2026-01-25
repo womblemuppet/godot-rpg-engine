@@ -12,5 +12,5 @@ func init(fighter_data):
   display_name = fighter_data.display_name
   hp = fighter_data.hp
   status = fighter_data.status
-  movelist = fighter_data.display_name
+  movelist = fighter_data.movelist
   fight_sprites = fighter_data.fight_sprites

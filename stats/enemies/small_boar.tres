@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_srm74")
+display_name = "Small Boar"
 hp = 50
+base_attack = 10
 metadata/_custom_type_script = "uid://dsaaybrhtxtg2"

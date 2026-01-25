@@ -1,8 +1,6 @@
 class_name Character
 extends Node
 
-@onready var fighter_scene = preload("uid://0wuliejp0ovh")
-
 var type: CharacterType
 
 var hp: int
@@ -47,7 +45,8 @@ func init(character_data):
       new_weapon.init(weapon)
       hold_weapon(new_weapon, weapon_slot)
       
-  for move_type: MoveType in character_data.movelist:
+  for move_type_id: int in character_data.movelist:
+    var move_type = ResourceManager.get_move_type(move_type_id)
     movelist.push_front(move_type)
       
 func to_dictionary():
@@ -86,6 +85,7 @@ func to_dictionary():
   return dictionary
 
 func to_fighter():
+  var fighter_scene = preload("uid://0wuliejp0ovh")
   var new_fighter = fighter_scene.instantiate()
   
   new_fighter.init(
