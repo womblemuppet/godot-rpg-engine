@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CharacterType" load_steps=2 format=3 uid="uid://cnl1t1k742ecs"]
+[gd_resource type="Resource" script_class="CharacterType" load_steps=3 format=3 uid="uid://cnl1t1k742ecs"]
 
+[ext_resource type="Texture2D" uid="uid://bifj1v5mlo22o" path="res://assets/sprites/bert.png" id="1_tcx7s"]
 [ext_resource type="Script" uid="uid://3on47uvjmj6w" path="res://stats/character_models/character_type.gd" id="1_v6o2m"]
 
 [resource]
@@ -8,4 +9,7 @@ id = 1
 display_name = "Bert"
 base_hp = 40
 base_attack = 8
+fight_sprites = {
+"idle": ExtResource("1_tcx7s")
+}
 metadata/_custom_type_script = "uid://3on47uvjmj6w"

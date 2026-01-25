@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://02qost67u7ml"]
+[gd_resource type="Resource" script_class="EnemyType" load_steps=4 format=3 uid="uid://02qost67u7ml"]
 
+[ext_resource type="Texture2D" uid="uid://b0r3k78x0njt1" path="res://assets/sprites/wild_boar.png" id="1_0u8sx"]
 [ext_resource type="Script" uid="uid://owibg3uce7t0" path="res://stats/move_models/move_type.gd" id="1_klqo7"]
 [ext_resource type="Script" uid="uid://dsaaybrhtxtg2" path="res://stats/enemy_models/enemy_type.gd" id="1_srm74"]
 
@@ -8,4 +9,7 @@ script = ExtResource("1_srm74")
 display_name = "Small Boar"
 hp = 50
 base_attack = 10
+fight_sprites = {
+"idle": ExtResource("1_0u8sx")
+}
 metadata/_custom_type_script = "uid://dsaaybrhtxtg2"

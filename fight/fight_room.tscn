@@ -2,7 +2,14 @@
 
 [node name="FightRoom" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_right = 2550.0
 offset_bottom = 1440.0
 color = Color(0.2923969, 0.38146105, 0.66521364, 1)
+
+[node name="MenuArea" type="ColorRect" parent="."]
+offset_left = 2.0
+offset_top = 877.0
+offset_right = 2550.0
+offset_bottom = 1440.0
+color = Color(0.5315832, 0.27816093, 0.32334387, 1)
