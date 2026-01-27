@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://0wuliejp0ovh"]
+[gd_scene format=3 uid="uid://0wuliejp0ovh"]
 
 [ext_resource type="Script" uid="uid://twht4x4basjp" path="res://fight/fighter.gd" id="1_5dkrg"]
 
-[node name="Fighter" type="Node2D"]
+[node name="Fighter" type="Node2D" unique_id=2002044246]
 script = ExtResource("1_5dkrg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=258398809]

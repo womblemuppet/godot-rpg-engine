@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://d2beb6vhden60"]
 
-[node name="FightRoom" type="Node2D"]
+[ext_resource type="Script" uid="uid://33gkgh3v6san" path="res://fight/fight.gd" id="1_wldmm"]
+
+[node name="Fight" type="Node2D" unique_id=739246345]
+script = ExtResource("1_wldmm")

@@ -1,15 +1,51 @@
 [gd_scene format=3 uid="uid://wcdwceorq67r"]
 
-[node name="FightRoom" type="Node2D"]
+[ext_resource type="Script" uid="uid://dnbc4lu37f01i" path="res://fight/fight_room.gd" id="1_82hfh"]
+[ext_resource type="Script" uid="uid://cpkj76wt0yq8" path="res://fight/movelist_menu.gd" id="2_ehys6"]
+[ext_resource type="Script" uid="uid://bd6fr1of2dw16" path="res://fight/target_menu.gd" id="3_8gp2o"]
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="FightRoom" type="Node2D" unique_id=1482505310]
+script = ExtResource("1_82hfh")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1793442950]
 offset_right = 2550.0
 offset_bottom = 1440.0
 color = Color(0.2923969, 0.38146105, 0.66521364, 1)
+metadata/_edit_lock_ = true
 
-[node name="MenuArea" type="ColorRect" parent="."]
+[node name="MenuArea" type="ColorRect" parent="." unique_id=871200997]
 offset_left = 2.0
 offset_top = 877.0
 offset_right = 2550.0
 offset_bottom = 1440.0
 color = Color(0.5315832, 0.27816093, 0.32334387, 1)
+metadata/_edit_lock_ = true
+
+[node name="CurrentFighterLabel" type="Label" parent="." unique_id=551571109]
+offset_left = 1847.0
+offset_top = 899.0
+offset_right = 2504.0
+offset_bottom = 1104.0
+theme_override_font_sizes/font_size = 150
+text = "-"
+
+[node name="MovelistScrollContainer" type="ScrollContainer" parent="." unique_id=1822745154]
+offset_left = 65.0
+offset_top = 930.0
+offset_right = 883.0
+offset_bottom = 1403.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MovelistMenu" type="VBoxContainer" parent="MovelistScrollContainer" unique_id=1027300460]
+custom_minimum_size = Vector2(800, 1000)
+layout_mode = 2
+script = ExtResource("2_ehys6")
+
+[node name="TargetMenu" type="VBoxContainer" parent="." unique_id=817664230]
+custom_minimum_size = Vector2(800, 1000)
+offset_left = 790.0
+offset_top = 887.0
+offset_right = 1517.0
+offset_bottom = 1434.0
+script = ExtResource("3_8gp2o")

@@ -1,0 +1,32 @@
+extends VBoxContainer
+
+
+var movelist_buttons = []
+
+signal move_chosen(move)
+
+func _ready():
+  visible = false
+
+func load_movelist(new_movelist):
+  for movelist_button in movelist_buttons:
+    movelist_button.queue_free()
+  
+  for i in range(new_movelist.size()):
+    var move: MoveType = new_movelist[i]
+    var new_movelist_button = Button.new()
+    add_child(new_movelist_button)
+    new_movelist_button.text = move.name
+    new_movelist_button.position.x += 200
+    new_movelist_button.position.y += 200 + i * 200
+    new_movelist_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    
+    new_movelist_button.pressed.connect(func(): move_chosen.emit(move))
+    
+func enable():
+  visible = true
+  
+func disable():
+  visible = false
+  for movelist_button: Button in movelist_buttons:
+    movelist_button.disable()
