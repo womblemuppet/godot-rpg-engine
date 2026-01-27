@@ -6,3 +6,10 @@
 script = ExtResource("1_5dkrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=258398809]
+
+[node name="HealthLabel" type="Label" parent="." unique_id=1455369415]
+offset_left = 171.0
+offset_top = -36.0
+offset_right = 424.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 150

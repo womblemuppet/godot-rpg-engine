@@ -86,7 +86,12 @@ func set_move_details(p_move_details):
 
 func phase_action():
   phase = PHASES.ACTION
-  print("would be doing action with move details %s" % move_details)
+  var move_type: MoveType = move_details.move
+  var target = move_details.target
+  
+  var script_node = move_type.effect.new()
+  script_node.do_effect.call(current_fighter, target)
+  script_node.queue_free()
 
 func phase_post_turn():
   phase = PHASES.POST_TURN

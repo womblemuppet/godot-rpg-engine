@@ -20,7 +20,6 @@ func show_movelist_menu_for_fighter(fighter):
   movelist_menu.load_movelist(fighter.movelist)
 
 func on_move_chosen(move: MoveType):
-  print("chosen move: %s" % move.name)
   movelist_menu.disable()
   
   var targets = fight.get_targets(move) # This is two-way binding now!?
