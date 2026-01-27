@@ -12,9 +12,12 @@ func load_movelist(new_movelist):
   for movelist_button in movelist_buttons:
     movelist_button.queue_free()
   
+  movelist_buttons = []
+  
   for i in range(new_movelist.size()):
     var move: MoveType = new_movelist[i]
     var new_movelist_button = Button.new()
+    movelist_buttons.push_back(new_movelist_button)
     add_child(new_movelist_button)
     new_movelist_button.text = move.name
     new_movelist_button.position.x += 200
@@ -29,4 +32,4 @@ func enable():
 func disable():
   visible = false
   for movelist_button: Button in movelist_buttons:
-    movelist_button.disable()
+    movelist_button.disabled = true

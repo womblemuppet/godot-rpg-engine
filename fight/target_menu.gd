@@ -9,14 +9,20 @@ func _ready():
 
 func enable():
   visible = true
+  
+func disable():
+  visible = false
 
 func load_targets(targets):
   for target_button in target_buttons:
     target_button.queue_free()
     
+  target_buttons = []
+    
   for i in range(targets.size()):
     var target = targets[i]
     var new_target_button = Button.new()
+    target_buttons.push_back(new_target_button)
     add_child(new_target_button)
     new_target_button.text = target.display_name
     new_target_button.position.x += 200

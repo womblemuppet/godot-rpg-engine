@@ -5,6 +5,7 @@ extends Node
 
 var turn_count: int = 0
 var is_allies_turn: bool = true
+
 enum PHASES { PRE_TURN, SELECT_FIGHTER, PRE_MOVE, MOVE, ACTION, POST_MOVE, POST_TURN }
 var phase: PHASES
 
@@ -39,9 +40,14 @@ func _ready():
   allies_attacker_queue = allies.duplicate()
   enemies_attacker_queue = enemies.duplicate()
   
-  phase_select_fighter()
+  phase_pre_turn()
   fight_room.fight = self
-  
+
+func phase_pre_turn():
+  phase = PHASES.PRE_TURN
+  turn_count += 1
+  phase_select_fighter()
+
 func phase_select_fighter():
   phase = PHASES.SELECT_FIGHTER
   
@@ -56,7 +62,6 @@ func phase_select_fighter():
     next_fighter = enemies_attacker_queue.pop_front()
     if !next_fighter:
       phase_post_turn()
-  
   
   set_current_fighter(next_fighter)
   phase_move()
@@ -92,7 +97,9 @@ func phase_action():
   var script_node = move_type.effect.new()
   script_node.do_effect.call(current_fighter, target)
   script_node.queue_free()
+  
+  phase_post_turn()
 
 func phase_post_turn():
   phase = PHASES.POST_TURN
-  
+  phase_pre_turn()

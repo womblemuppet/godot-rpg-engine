@@ -38,3 +38,5 @@ func on_target_chosen(target):
   
   move_chosen = null
   target_chosen = null
+
+  target_menu.disable()
