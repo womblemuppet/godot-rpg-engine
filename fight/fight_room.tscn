@@ -27,25 +27,21 @@ offset_top = 1208.0
 offset_right = 2525.0
 offset_bottom = 1413.0
 theme_override_font_sizes/font_size = 150
-text = "SMALL BOAR"
+text = "-"
+horizontal_alignment = 2
 
-[node name="MovelistScrollContainer" type="ScrollContainer" parent="." unique_id=1822745154]
-offset_left = 65.0
-offset_top = 930.0
-offset_right = 883.0
-offset_bottom = 1403.0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="MovelistMenu" type="VBoxContainer" parent="MovelistScrollContainer" unique_id=1027300460]
+[node name="MovelistMenu" type="VBoxContainer" parent="." unique_id=1027300460]
 custom_minimum_size = Vector2(800, 1000)
-layout_mode = 2
+offset_left = 65.0
+offset_top = 901.0
+offset_right = 865.0
+offset_bottom = 1901.0
 script = ExtResource("2_ehys6")
 
 [node name="TargetMenu" type="VBoxContainer" parent="." unique_id=817664230]
-custom_minimum_size = Vector2(800, 1000)
-offset_left = 790.0
-offset_top = 887.0
-offset_right = 1517.0
-offset_bottom = 1434.0
+custom_minimum_size = Vector2(800, 500)
+offset_left = 961.0
+offset_top = 889.0
+offset_right = 1761.0
+offset_bottom = 1389.0
 script = ExtResource("3_8gp2o")

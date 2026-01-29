@@ -1,5 +1,6 @@
 extends VBoxContainer
 
+@onready var fight_room_button_scene = preload("uid://b3y2b0s3qf6jt")
 
 var movelist_buttons = []
 
@@ -16,13 +17,12 @@ func load_movelist(new_movelist):
   
   for i in range(new_movelist.size()):
     var move: MoveType = new_movelist[i]
-    var new_movelist_button = Button.new()
+    var new_movelist_button = fight_room_button_scene.instantiate()
     movelist_buttons.push_back(new_movelist_button)
     add_child(new_movelist_button)
     new_movelist_button.text = move.name
     new_movelist_button.position.x += 200
     new_movelist_button.position.y += 200 + i * 200
-    new_movelist_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     
     new_movelist_button.pressed.connect(func(): move_chosen.emit(move))
     

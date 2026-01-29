@@ -1,7 +1,7 @@
 extends Node
 
 @onready var current_fighter_label = $"CurrentFighterLabel"
-@onready var movelist_menu = $"MovelistScrollContainer/MovelistMenu"
+@onready var movelist_menu = $MovelistMenu
 @onready var target_menu = $"TargetMenu"
 
 var fight
