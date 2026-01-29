@@ -4,3 +4,7 @@
 
 [node name="Fight" type="Node2D" unique_id=739246345]
 script = ExtResource("1_wldmm")
+
+[node name="Timer" type="Timer" parent="." unique_id=572703127]
+wait_time = 0.5
+one_shot = true

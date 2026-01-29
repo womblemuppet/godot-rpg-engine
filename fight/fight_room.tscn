@@ -22,12 +22,12 @@ color = Color(0.5315832, 0.27816093, 0.32334387, 1)
 metadata/_edit_lock_ = true
 
 [node name="CurrentFighterLabel" type="Label" parent="." unique_id=551571109]
-offset_left = 1847.0
-offset_top = 899.0
-offset_right = 2504.0
-offset_bottom = 1104.0
+offset_left = 1591.0
+offset_top = 1208.0
+offset_right = 2525.0
+offset_bottom = 1413.0
 theme_override_font_sizes/font_size = 150
-text = "-"
+text = "SMALL BOAR"
 
 [node name="MovelistScrollContainer" type="ScrollContainer" parent="." unique_id=1822745154]
 offset_left = 65.0

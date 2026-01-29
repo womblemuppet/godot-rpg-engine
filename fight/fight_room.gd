@@ -31,7 +31,7 @@ func on_move_chosen(move: MoveType):
 func on_target_chosen(target):
   target_chosen = target
   
-  fight.set_move_details({
+  fight.receive_move_details({
     "move": move_chosen,
     "target": target_chosen
   })

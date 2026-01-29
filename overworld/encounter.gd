@@ -1,6 +1,7 @@
 extends Node
 
 @onready var area_2d = $Area2D
+@onready var fight_scene = preload("uid://d2beb6vhden60")
 
 func _ready():
   area_2d.body_entered.connect(on_collision)
@@ -10,7 +11,7 @@ func on_collision(body):
     go_to_encounter()
     
 func go_to_encounter():
-  var new_fight = Fight.new()
+  var new_fight = fight_scene.instantiate()
   
   var allies = CharacterManager.get_characters()
   

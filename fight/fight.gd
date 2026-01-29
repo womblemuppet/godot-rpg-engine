@@ -1,7 +1,7 @@
-class_name Fight
 extends Node
 
 @onready var fight_room = $"../../FightRoom"
+@onready var timer = $Timer  # WIP testing purposes
 
 var turn_count: int = 0
 var is_allies_turn: bool = true
@@ -25,6 +25,8 @@ func init(p_allies, p_enemies):
   enemies = p_enemies.map(func(character): return character.to_fighter())
 
 func _ready():
+  timer.timeout.connect(on_phase_ended)
+  
   for i in range(allies.size()):
     var ally = allies[i]
     add_child(ally)
@@ -37,20 +39,57 @@ func _ready():
     enemy.position.x += 1800
     enemy.position.y += 200 + (i * 300)
   
-  allies_attacker_queue = allies.duplicate()
-  enemies_attacker_queue = enemies.duplicate()
+  repopulate_turn_queues()
   
-  phase_pre_turn()
   fight_room.fight = self
+  
+  queue_phase(PHASES.PRE_TURN)
+  
+func queue_phase(new_phase: PHASES):
+  # wait for animations etc
+  timer.start(0.5)
+  phase = new_phase
+  print("phase = %s" % PHASES.keys()[phase])
+
+func on_phase_ended():
+  match phase:
+    PHASES.PRE_TURN:
+      phase_pre_turn()
+    PHASES.SELECT_FIGHTER:
+      phase_select_fighter()
+    PHASES.PRE_MOVE:
+      phase_pre_move()
+    PHASES.MOVE:
+      phase_move()
+    PHASES.ACTION:
+      phase_action()
+    PHASES.POST_MOVE:
+      phase_post_move()
+    PHASES.POST_TURN:
+      phase_post_turn()
+ 
+  
+func repopulate_turn_queues():
+  var filter_fainted = func(fighter): return (fighter.status != Character.Status.FAINTED)
+
+  allies_attacker_queue = allies.duplicate().filter(filter_fainted)  
+  enemies_attacker_queue = enemies.duplicate().filter(filter_fainted)
 
 func phase_pre_turn():
-  phase = PHASES.PRE_TURN
   turn_count += 1
-  phase_select_fighter()
+  is_allies_turn = true
+  repopulate_turn_queues()
+  
+  if allies_attacker_queue.is_empty():
+    print("loss!")
+    return
+  if enemies_attacker_queue.is_empty():
+    print("win!")
+    return
+  
+  queue_phase(PHASES.SELECT_FIGHTER)
 
 func phase_select_fighter():
-  phase = PHASES.SELECT_FIGHTER
-  
   var next_fighter
   
   if is_allies_turn:
@@ -61,10 +100,11 @@ func phase_select_fighter():
   if !next_fighter && !is_allies_turn:
     next_fighter = enemies_attacker_queue.pop_front()
     if !next_fighter:
-      phase_post_turn()
+      queue_phase(PHASES.POST_TURN)
+      return
   
   set_current_fighter(next_fighter)
-  phase_move()
+  queue_phase(PHASES.PRE_MOVE)
   
 func set_current_fighter(new_current_fighter):
   current_fighter = new_current_fighter
@@ -79,18 +119,31 @@ func get_targets(_move_type):
     list_of_targets = allies
     
   return list_of_targets
+  
+func phase_pre_move():
+  queue_phase(PHASES.MOVE)
 
 func phase_move():
-  phase = PHASES.MOVE
-  fight_room.show_movelist_menu_for_fighter(current_fighter)
+  if is_allies_turn:
+    fight_room.show_movelist_menu_for_fighter(current_fighter)
+  else:
+    var move_type = current_fighter.movelist[0]
+    var valid_targets = get_targets(move_type)
+    var target = valid_targets.pick_random()
+    
+    move_details = {
+      "move": move_type,
+      "target": target
+    }
+    
+    queue_phase(PHASES.ACTION)
 
-func set_move_details(p_move_details):
+func receive_move_details(p_move_details):
   move_details = p_move_details
   
-  phase_action()
+  queue_phase(PHASES.ACTION)
 
 func phase_action():
-  phase = PHASES.ACTION
   var move_type: MoveType = move_details.move
   var target = move_details.target
   
@@ -98,8 +151,10 @@ func phase_action():
   script_node.do_effect.call(current_fighter, target)
   script_node.queue_free()
   
-  phase_post_turn()
+  queue_phase(PHASES.POST_MOVE)
+  
+func phase_post_move():
+  queue_phase(PHASES.SELECT_FIGHTER)
 
 func phase_post_turn():
-  phase = PHASES.POST_TURN
-  phase_pre_turn()
+  queue_phase(PHASES.PRE_TURN)

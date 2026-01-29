@@ -28,6 +28,9 @@ func load_movelist(new_movelist):
     
 func enable():
   visible = true
+  for movelist_button: Button in movelist_buttons:
+    movelist_button.disabled = false
+
   
 func disable():
   visible = false

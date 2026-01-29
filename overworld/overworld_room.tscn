@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0pgxsyty26ig"]
+[gd_scene format=3 uid="uid://d0pgxsyty26ig"]
 
 [ext_resource type="PackedScene" uid="uid://bttjqj2x31r51" path="res://overworld/player.tscn" id="1_sytrv"]
 [ext_resource type="PackedScene" uid="uid://cqi18ir5o0su7" path="res://assets/tilemaps/room_one_tilemaplayer.tscn" id="2_52wqg"]
 [ext_resource type="PackedScene" uid="uid://b8qiirxwbcdvb" path="res://overworld/encounter.tscn" id="3_52wqg"]
 
-[node name="OverworldRoom" type="Node2D"]
+[node name="OverworldRoom" type="Node2D" unique_id=2037488643]
 
-[node name="Player" parent="." instance=ExtResource("1_sytrv")]
+[node name="Player" parent="." unique_id=1995723585 instance=ExtResource("1_sytrv")]
 position = Vector2(360, 360)
 
-[node name="RoomOneTilemaplayer" parent="." instance=ExtResource("2_52wqg")]
+[node name="RoomOneTilemaplayer" parent="." unique_id=974400624 instance=ExtResource("2_52wqg")]
 z_index = -10
 
-[node name="Encounter" parent="." instance=ExtResource("3_52wqg")]
-position = Vector2(498, 1468)
+[node name="Encounter" parent="." unique_id=76493073 instance=ExtResource("3_52wqg")]
+position = Vector2(596, 362)
