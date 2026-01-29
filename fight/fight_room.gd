@@ -1,8 +1,9 @@
 extends Node
 
-@onready var current_fighter_label = $"CurrentFighterLabel"
+@onready var current_fighter_label = $CurrentFighterLabel
+@onready var current_phase_label = $CurrentPhaseLabel
 @onready var movelist_menu = $MovelistMenu
-@onready var target_menu = $"TargetMenu"
+@onready var target_menu = $TargetMenu
 
 var fight
 var move_chosen
@@ -14,6 +15,9 @@ func _ready():
 
 func set_current_fighter(fighter):
   current_fighter_label.text = fighter.display_name
+  
+func set_current_phase_label(phase):
+  current_phase_label.text = phase
 
 func show_movelist_menu_for_fighter(fighter):
   movelist_menu.enable()

@@ -45,3 +45,12 @@ offset_top = 889.0
 offset_right = 1761.0
 offset_bottom = 1389.0
 script = ExtResource("3_8gp2o")
+
+[node name="CurrentPhaseLabel" type="Label" parent="." unique_id=1408976960]
+offset_left = 1732.0
+offset_top = 905.0
+offset_right = 2529.0
+offset_bottom = 1042.0
+theme_override_font_sizes/font_size = 100
+text = "PRE TURN"
+horizontal_alignment = 2

@@ -32,12 +32,14 @@ func _ready():
     add_child(ally)
     ally.position.x += 200
     ally.position.y += 200 + (i * 300)
+    ally.fainted.connect(on_fainted)
     
   for i in range(enemies.size()):
     var enemy = enemies[i]
     add_child(enemy)
     enemy.position.x += 1800
     enemy.position.y += 200 + (i * 300)
+    enemy.fainted.connect(on_fainted)
   
   repopulate_turn_queues()
   
@@ -49,7 +51,7 @@ func queue_phase(new_phase: PHASES):
   # wait for animations etc
   timer.start(0.5)
   phase = new_phase
-  print("phase = %s" % PHASES.keys()[phase])
+  fight_room.set_current_phase_label(PHASES.keys()[phase])
 
 func on_phase_ended():
   match phase:
@@ -67,13 +69,20 @@ func on_phase_ended():
       phase_post_move()
     PHASES.POST_TURN:
       phase_post_turn()
- 
   
-func repopulate_turn_queues():
-  var filter_fainted = func(fighter): return (fighter.status != Character.Status.FAINTED)
+func on_fainted(_fighter):
+  remove_fainted_from_queues()
+  
+func remove_fainted_from_queues():
+  allies_attacker_queue = filter_fainted(allies_attacker_queue)
+  enemies_attacker_queue = filter_fainted(enemies_attacker_queue)
 
-  allies_attacker_queue = allies.duplicate().filter(filter_fainted)  
-  enemies_attacker_queue = enemies.duplicate().filter(filter_fainted)
+func filter_fainted(fighters):
+  return fighters.filter(func(fighter): return (fighter.status != Character.Status.FAINTED))
+
+func repopulate_turn_queues():
+  allies_attacker_queue = filter_fainted(allies.duplicate())
+  enemies_attacker_queue = filter_fainted(enemies.duplicate())
 
 func phase_pre_turn():
   turn_count += 1
@@ -114,9 +123,9 @@ func set_current_fighter(new_current_fighter):
 func get_targets(_move_type):
   var list_of_targets
   if is_allies_turn:
-    list_of_targets = enemies
+    list_of_targets = filter_fainted(enemies)
   else:
-    list_of_targets = allies
+    list_of_targets = filter_fainted(allies)
     
   return list_of_targets
   
@@ -127,17 +136,20 @@ func phase_move():
   if is_allies_turn:
     fight_room.show_movelist_menu_for_fighter(current_fighter)
   else:
-    var move_type = current_fighter.movelist[0]
-    var valid_targets = get_targets(move_type)
-    var target = valid_targets.pick_random()
-    
-    move_details = {
-      "move": move_type,
-      "target": target
-    }
-    
-    queue_phase(PHASES.ACTION)
+    enemy_take_move()
 
+func enemy_take_move():
+  var move_type = current_fighter.movelist[0]
+  var valid_targets = get_targets(move_type)
+  var target = valid_targets.pick_random()
+  
+  move_details = {
+    "move": move_type,
+    "target": target
+  }
+  
+  queue_phase(PHASES.ACTION)
+ 
 func receive_move_details(p_move_details):
   move_details = p_move_details
   

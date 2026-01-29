@@ -3,6 +3,8 @@ extends Node2D
 @onready var health_label = $HealthLabel
 @onready var sprite_2d = $Sprite2D
 
+signal fainted(fighter)
+
 var display_name: String
 var hp: int
 var attack: int
@@ -34,8 +36,9 @@ func take_damage(damage):
 func update_hp(new_hp):
   hp = new_hp
   health_label.text = str(hp)
-  if hp < 0:
+  if hp <= 0:
     faint()
     
 func faint():
   status = Character.Status.FAINTED
+  fainted.emit(self)
