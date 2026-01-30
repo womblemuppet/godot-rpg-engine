@@ -1,8 +1,12 @@
+class_name Player
 extends CharacterBody2D
   
 var is_moving = false
 var direction = Vector2(0, 0)
 var GRID_SIZE = 120
+
+func _ready():
+  SaveManager.register_player(self)
 
 func _process(_delta):
   if !is_moving:

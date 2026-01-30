@@ -1,6 +1,7 @@
 class_name Character
 extends Node
 
+
 var type: CharacterType
 
 var hp: int
@@ -68,8 +69,10 @@ func to_dictionary():
     else:
       held_weapon_dict[weapon_slot] = null
   
+  var movelist_ids = movelist.map(func(move_type): return move_type.id)
+  
   var dictionary = {
-    "type": type,
+    "type": type.id,
     "hp": hp,
     "status": status,
     "insp": insp,
@@ -79,7 +82,7 @@ func to_dictionary():
     "hung": hung,
     "held_armour": held_armour_dict,
     "held_weapons": held_weapon_dict,
-    "movelist": movelist
+    "movelist": movelist_ids
   }
   
   return dictionary

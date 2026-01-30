@@ -3,6 +3,8 @@ extends Node
 @onready var fight_room = $"../../FightRoom"
 @onready var timer = $Timer  # WIP testing purposes
 
+var fighters_dict = {}
+
 var turn_count: int = 0
 var is_allies_turn: bool = true
 
@@ -21,7 +23,14 @@ var move_details = {
 }
 
 func init(p_allies, p_enemies):
-  allies = p_allies.map(func(character): return character.to_fighter())
+  allies = p_allies.map(
+    func(character):
+      var new_fighter = character.to_fighter()
+      fighters_dict[character.type.id] = new_fighter
+      
+      return new_fighter
+  )
+  
   enemies = p_enemies.map(func(character): return character.to_fighter())
 
 func _ready():
@@ -46,10 +55,10 @@ func _ready():
   fight_room.fight = self
   
   queue_phase(PHASES.PRE_TURN)
-  
+
 func queue_phase(new_phase: PHASES):
   # wait for animations etc
-  timer.start(0.5)
+  timer.start(0.1)
   phase = new_phase
   fight_room.set_current_phase_label(PHASES.keys()[phase])
 
@@ -69,10 +78,10 @@ func on_phase_ended():
       phase_post_move()
     PHASES.POST_TURN:
       phase_post_turn()
-  
+
 func on_fainted(_fighter):
   remove_fainted_from_queues()
-  
+
 func remove_fainted_from_queues():
   allies_attacker_queue = filter_fainted(allies_attacker_queue)
   enemies_attacker_queue = filter_fainted(enemies_attacker_queue)
@@ -89,16 +98,16 @@ func phase_pre_turn():
   is_allies_turn = true
   repopulate_turn_queues()
   
-  if allies_attacker_queue.is_empty():
-    print("loss!")
-    return
-  if enemies_attacker_queue.is_empty():
-    print("win!")
-    return
-  
   queue_phase(PHASES.SELECT_FIGHTER)
 
 func phase_select_fighter():
+  if filter_fainted(allies).is_empty():
+    lose_fight()
+    return
+  if filter_fainted(enemies).is_empty():
+    win_fight()
+    return
+    
   var next_fighter
   
   if is_allies_turn:
@@ -170,3 +179,16 @@ func phase_post_move():
 
 func phase_post_turn():
   queue_phase(PHASES.PRE_TURN)
+
+func win_fight():
+  end_fight()
+  
+func lose_fight():
+  end_fight()
+  
+func end_fight():
+  for character_id in fighters_dict:
+    var fighter = fighters_dict[character_id]
+    CharacterManager.set_character_hp(character_id, fighter.hp)
+    
+  SceneManager.go_to_overworld_room()

@@ -3,6 +3,8 @@ extends Node
 var scene: Node
 var children_queue: Array
 
+var overworld
+
 @onready var overworld_room_scene = preload("uid://d0pgxsyty26ig")
 @onready var fight_room_scene = preload("uid://wcdwceorq67r")
   
@@ -31,8 +33,12 @@ func queue_children(new_children: Array):
 func clear_children_queue():
   children_queue = []
 
+func get_overworld_node():
+  return overworld
+
 func go_to_overworld_room():
-  change_scene(overworld_room_scene)
+  overworld = change_scene(overworld_room_scene)
+  SaveManager.load_game(overworld)
 
 func go_to_fight_room():
   change_scene(fight_room_scene)
