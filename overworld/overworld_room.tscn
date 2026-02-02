@@ -2,11 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://cqi18ir5o0su7" path="res://assets/tilemaps/room_one_tilemaplayer.tscn" id="2_52wqg"]
 [ext_resource type="PackedScene" uid="uid://b8qiirxwbcdvb" path="res://overworld/encounter.tscn" id="3_52wqg"]
+[ext_resource type="PackedScene" uid="uid://w4qnuc35hhk" path="res://overworld/town.tscn" id="3_nnjnc"]
+[ext_resource type="Resource" uid="uid://pm76ei37xlkm" path="res://overworld/encounters/encounter_one.tres" id="3_qqr33"]
 
 [node name="OverworldRoom" type="Node2D" unique_id=2037488643]
 
 [node name="RoomOneTilemaplayer" parent="." unique_id=974400624 instance=ExtResource("2_52wqg")]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Encounter" parent="." unique_id=76493073 instance=ExtResource("3_52wqg")]
 position = Vector2(962, 1430)
+type = ExtResource("3_qqr33")
+
+[node name="Town" parent="." unique_id=1319822129 instance=ExtResource("3_nnjnc")]
+position = Vector2(360, 360)

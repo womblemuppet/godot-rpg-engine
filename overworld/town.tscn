@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://w4qnuc35hhk"]
+
+[ext_resource type="Texture2D" uid="uid://bvhmo2j0mxxkm" path="res://assets/sprites/town.png" id="1_0lpj8"]
+[ext_resource type="Script" uid="uid://ghgnck8mt1n4" path="res://overworld/town.gd" id="1_gvasv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lpj8"]
+size = Vector2(264, 279)
+
+[node name="Town" type="Node2D" unique_id=1319822129]
+script = ExtResource("1_gvasv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=438386670]
+position = Vector2(150, 150)
+texture = ExtResource("1_0lpj8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1522021380]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=409653232]
+position = Vector2(143, 151.5)
+shape = SubResource("RectangleShape2D_0lpj8")

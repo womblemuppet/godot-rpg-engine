@@ -7,7 +7,12 @@ var overworld
 
 @onready var overworld_room_scene = preload("uid://d0pgxsyty26ig")
 @onready var fight_room_scene = preload("uid://wcdwceorq67r")
-  
+
+@onready var player_scene = preload("uid://bttjqj2x31r51")
+var player_spawn_position: Vector2
+
+var persistence = {}
+
 func _ready():
   scene = get_tree().current_scene
   
@@ -38,7 +43,17 @@ func get_overworld_node():
 
 func go_to_overworld_room():
   overworld = change_scene(overworld_room_scene)
-  SaveManager.load_game(overworld)
-
+  call_deferred("spawn_player")
+  
+  return overworld
+  
 func go_to_fight_room():
   change_scene(fight_room_scene)
+  
+func set_player_spawn_position(p_position):
+  player_spawn_position = p_position
+  
+func spawn_player():
+  var new_player = player_scene.instantiate()
+  overworld.add_child(new_player)
+  new_player.position = player_spawn_position

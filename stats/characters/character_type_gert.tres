@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterType" format=3 uid="uid://rge0yx73wo4"]
+
+[ext_resource type="Texture2D" uid="uid://0gvfftp2vtjm" path="res://assets/sprites/gert.png" id="1_lvuil"]
+[ext_resource type="Script" uid="uid://3on47uvjmj6w" path="res://stats/character_models/character_type.gd" id="2_kho67"]
+
+[resource]
+script = ExtResource("2_kho67")
+id = 2
+display_name = "Gert"
+base_hp = 50
+base_attack = 6
+fight_sprites = {
+"idle": ExtResource("1_lvuil")
+}
+metadata/_custom_type_script = "uid://3on47uvjmj6w"

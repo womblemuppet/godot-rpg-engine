@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EncounterType" format=3 uid="uid://pm76ei37xlkm"]
+
+[ext_resource type="Script" uid="uid://dsaaybrhtxtg2" path="res://stats/enemy_models/enemy_type.gd" id="1_qvla7"]
+[ext_resource type="Script" uid="uid://vid8gq4kmq3" path="res://overworld/encounter_models/encounter_type.gd" id="2_5s3k6"]
+[ext_resource type="Resource" uid="uid://02qost67u7ml" path="res://stats/enemies/small_boar.tres" id="2_7kirw"]
+
+[resource]
+script = ExtResource("2_5s3k6")
+enemies_list = Array[ExtResource("1_qvla7")]([ExtResource("2_7kirw")])
+metadata/_custom_type_script = "uid://vid8gq4kmq3"

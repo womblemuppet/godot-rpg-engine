@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jjyfpa5kxrmb"
-path="res://.godot/imported/bertha.png-09733787fbde0cbbe13988ada60f8898.ctex"
+uid="uid://bvhmo2j0mxxkm"
+path="res://.godot/imported/town.png-63fa61d263ba3cfa8fb68e09abc185bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bertha.png"
-dest_files=["res://.godot/imported/bertha.png-09733787fbde0cbbe13988ada60f8898.ctex"]
+source_file="res://assets/sprites/town.png"
+dest_files=["res://.godot/imported/town.png-63fa61d263ba3cfa8fb68e09abc185bb.ctex"]
 
 [params]
 

@@ -1,13 +1,12 @@
 extends Node
 
-var player_scene = preload("uid://bttjqj2x31r51")
 
 var save_path = "user://savegame.save"
 var player
 
 func _input(event):
   if Input.is_action_pressed("Load Game"):
-    SaveManager.load_game(SceneManager.get_overworld_node())
+    SaveManager.load_game()
   if Input.is_action_pressed("Save Game"):
     SaveManager.save_game()
   
@@ -44,7 +43,7 @@ func save_game():
   var yaml = YAML.dump(data_to_save)
   save_file.store_line(yaml)
 
-func load_game(overworld_node):
+func load_game():
   print("loading game!")
   
   var save_file = FileAccess.open(save_path, FileAccess.READ)
@@ -68,6 +67,4 @@ func load_game(overworld_node):
   if loaded_data.has("Player"):
     var player_data = loaded_data["Player"]
     
-    var new_player = player_scene.instantiate()
-    overworld_node.add_child(new_player)
-    new_player.position = Vector2(player_data.x, player_data.y)
+    SceneManager.set_player_spawn_position(Vector2(player_data.x, player_data.y))

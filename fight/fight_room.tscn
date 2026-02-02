@@ -10,7 +10,7 @@ script = ExtResource("1_82hfh")
 [node name="Background" type="ColorRect" parent="." unique_id=1793442950]
 offset_right = 2550.0
 offset_bottom = 1440.0
-color = Color(0.2923969, 0.38146105, 0.66521364, 1)
+color = Color(0.36165226, 0.413972, 0.34024632, 1)
 metadata/_edit_lock_ = true
 
 [node name="MenuArea" type="ColorRect" parent="." unique_id=871200997]
@@ -18,7 +18,7 @@ offset_left = 2.0
 offset_top = 877.0
 offset_right = 2550.0
 offset_bottom = 1440.0
-color = Color(0.5315832, 0.27816093, 0.32334387, 1)
+color = Color(0.1014713, 0.071429946, 0.16860798, 1)
 metadata/_edit_lock_ = true
 
 [node name="CurrentFighterLabel" type="Label" parent="." unique_id=551571109]
