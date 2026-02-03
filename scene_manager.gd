@@ -5,12 +5,15 @@ var children_queue: Array
 
 var overworld
 
+
 @onready var overworld_room_scene = preload("uid://d0pgxsyty26ig")
 @onready var fight_room_scene = preload("uid://wcdwceorq67r")
+@onready var inventory_scene = preload("uid://coxifba0ojaln")
 
 @onready var player_scene = preload("uid://bttjqj2x31r51")
 var player_spawn_position: Vector2
 
+var inventory_page
 var persistence = {}
 
 func _ready():
@@ -43,9 +46,17 @@ func get_overworld_node():
 
 func go_to_overworld_room():
   overworld = change_scene(overworld_room_scene)
-  call_deferred("spawn_player")
+  call_deferred("overworld_room_deferred")
+  
   
   return overworld
+
+func overworld_room_deferred():
+  spawn_player()
+  inventory_page = inventory_scene.instantiate()
+  overworld.add_child(inventory_page)
+  inventory_page.visible = false
+  InventoryManager.set_inventory_page(inventory_page)
   
 func go_to_fight_room():
   change_scene(fight_room_scene)

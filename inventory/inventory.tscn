@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://coxifba0ojaln"]
+
+[ext_resource type="Script" uid="uid://bq7sxn3s8g3dj" path="res://inventory/inventory.gd" id="1_62wf1"]
+
+[node name="Inventory" type="CanvasLayer" unique_id=2004672793]
+script = ExtResource("1_62wf1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2096632208]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 2400.0
+offset_bottom = 1320.0
+color = Color(0.34033942, 0.34033927, 0.3403394, 1)
