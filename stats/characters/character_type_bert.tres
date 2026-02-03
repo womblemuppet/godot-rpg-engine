@@ -8,7 +8,7 @@ script = ExtResource("1_v6o2m")
 id = 1
 display_name = "Bert"
 base_hp = 40
-base_attack = 80
+base_attack = 8
 fight_sprites = {
 "idle": ExtResource("1_tcx7s")
 }

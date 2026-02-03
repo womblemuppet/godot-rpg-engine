@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var health_label = $HealthLabel
+@onready var name_label = $NameLabel
 @onready var sprite_2d = $Sprite2D
 
 signal fainted(fighter)
@@ -17,6 +18,7 @@ var fight_sprites: Dictionary
 func init(fighter_data):
   sprite_2d = $Sprite2D
   health_label = $HealthLabel
+  name_label = $NameLabel ## shouldn't do this should use callback init()
   
   display_name = fighter_data.display_name
   hp = fighter_data.hp
@@ -28,6 +30,7 @@ func init(fighter_data):
   if fight_sprites.has("idle"):
     sprite_2d.texture = fight_sprites["idle"]
     
+  name_label.text = display_name
   update_hp(hp)
 
 func take_damage(damage):

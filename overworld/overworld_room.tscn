@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cqi18ir5o0su7" path="res://assets/tilemaps/room_one_tilemaplayer.tscn" id="2_52wqg"]
 [ext_resource type="PackedScene" uid="uid://b8qiirxwbcdvb" path="res://overworld/encounter.tscn" id="3_52wqg"]
 [ext_resource type="PackedScene" uid="uid://w4qnuc35hhk" path="res://overworld/town.tscn" id="3_nnjnc"]
-[ext_resource type="Resource" uid="uid://pm76ei37xlkm" path="res://overworld/encounters/encounter_one.tres" id="3_qqr33"]
+[ext_resource type="Script" uid="uid://dsaaybrhtxtg2" path="res://stats/enemy_models/enemy_type.gd" id="4_qqr33"]
+[ext_resource type="Resource" uid="uid://02qost67u7ml" path="res://stats/enemies/small_boar.tres" id="5_t8ib1"]
 
 [node name="OverworldRoom" type="Node2D" unique_id=2037488643]
 
@@ -11,9 +12,17 @@
 z_index = -10
 metadata/_edit_lock_ = true
 
-[node name="Encounter" parent="." unique_id=76493073 instance=ExtResource("3_52wqg")]
-position = Vector2(962, 1430)
-type = ExtResource("3_qqr33")
-
 [node name="Town" parent="." unique_id=1319822129 instance=ExtResource("3_nnjnc")]
 position = Vector2(360, 360)
+
+[node name="Encounter" parent="." unique_id=556752066 instance=ExtResource("3_52wqg")]
+position = Vector2(480, 1560)
+enemies_list = Array[ExtResource("4_qqr33")]([ExtResource("5_t8ib1")])
+
+[node name="Encounter2" parent="." unique_id=906634827 instance=ExtResource("3_52wqg")]
+position = Vector2(2880, 1680)
+enemies_list = Array[ExtResource("4_qqr33")]([ExtResource("5_t8ib1"), ExtResource("5_t8ib1")])
+
+[node name="Encounter3" parent="." unique_id=2092855244 instance=ExtResource("3_52wqg")]
+position = Vector2(2880, 960)
+enemies_list = Array[ExtResource("4_qqr33")]([ExtResource("5_t8ib1")])

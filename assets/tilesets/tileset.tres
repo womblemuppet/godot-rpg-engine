@@ -1,6 +1,10 @@
 [gd_resource type="TileSet" format=3 uid="uid://dh48xekq5we0f"]
 
+[ext_resource type="PackedScene" uid="uid://b8qiirxwbcdvb" path="res://overworld/encounter.tscn" id="1_innw0"]
 [ext_resource type="Texture2D" uid="uid://dh7l4bcclt7aj" path="res://assets/tilesets/test_atlas.png" id="1_rlrdu"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rlrdu"]
+scenes/1/scene = ExtResource("1_innw0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlrdu"]
 texture = ExtResource("1_rlrdu")
@@ -15,3 +19,4 @@ texture_region_size = Vector2i(120, 120)
 tile_size = Vector2i(120, 120)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_rlrdu")
+sources/0 = SubResource("TileSetScenesCollectionSource_rlrdu")

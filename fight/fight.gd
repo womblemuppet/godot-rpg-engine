@@ -184,6 +184,7 @@ func win_fight():
   end_fight()
   
 func lose_fight():
+  SceneManager.set_player_spawn_position(Vector2(300, 300))
   end_fight()
   
 func end_fight():

@@ -1,6 +1,6 @@
 extends Node
 
-@export var type: EncounterType
+@export var enemies_list: Array[EnemyType]
 
 @onready var area_2d = $Area2D
 @onready var fight_scene = preload("uid://d2beb6vhden60")
@@ -19,7 +19,7 @@ func go_to_encounter():
   var allies = CharacterManager.get_characters()
   
   var enemies = []
-  for enemy_type: EnemyType in type.enemies_list:
+  for enemy_type: EnemyType in enemies_list:
     var new_enemy = Enemy.new()
     new_enemy.init(enemy_type)
     
