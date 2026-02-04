@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemType" format=3 uid="uid://320myj3ml7eg"]
+
+[ext_resource type="Texture2D" uid="uid://d0c53yx72kxra" path="res://assets/sprites/tunic.png" id="1_v7ush"]
+[ext_resource type="Script" uid="uid://dsycxqxhc82si" path="res://stats/item_models/item_type.gd" id="2_ylop1"]
+
+[resource]
+script = ExtResource("2_ylop1")
+id = 1
+name = "Tunic"
+can_equip = true
+armour = 10
+inventory_sprite = ExtResource("1_v7ush")
+metadata/_custom_type_script = "uid://dsycxqxhc82si"

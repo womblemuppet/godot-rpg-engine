@@ -109,3 +109,15 @@ func hold_armour(item: Item, item_slot: ArmourSlot):
 
 func hold_weapon(item: Item, item_slot: WeaponSlot):
   held_weapons[item_slot] = item
+
+func get_main_weapon():
+  return held_weapons.get(WeaponSlot.WEAPON_MAIN)
+  
+func get_offhand_weapon():
+  return held_weapons.get(WeaponSlot.WEAPON_OFFHAND)
+  
+func get_top_armour():
+  return held_armour.get(ArmourSlot.ARMOUR_TOP)
+  
+func get_bottom_armour():
+  return held_armour.get(ArmourSlot.ARMOUR_BOTTOM)

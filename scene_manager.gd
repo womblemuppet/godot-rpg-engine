@@ -48,15 +48,14 @@ func go_to_overworld_room():
   overworld = change_scene(overworld_room_scene)
   call_deferred("overworld_room_deferred")
   
-  
   return overworld
 
 func overworld_room_deferred():
   spawn_player()
-  inventory_page = inventory_scene.instantiate()
-  overworld.add_child(inventory_page)
-  inventory_page.visible = false
+  
+  spawn_inventory_page()
   InventoryManager.set_inventory_page(inventory_page)
+  InventoryManager.load_inventory()
   
 func go_to_fight_room():
   change_scene(fight_room_scene)
@@ -68,3 +67,8 @@ func spawn_player():
   var new_player = player_scene.instantiate()
   overworld.add_child(new_player)
   new_player.position = player_spawn_position
+
+func spawn_inventory_page():
+  inventory_page = inventory_scene.instantiate()
+  overworld.add_child(inventory_page)
+  inventory_page.visible = false

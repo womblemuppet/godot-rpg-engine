@@ -62,7 +62,7 @@ func load_game():
 
   if loaded_data.has("Inventory"):
     var inventory_data: Array = loaded_data["Inventory"]
-    InventoryManager.load_inventory(inventory_data)
+    InventoryManager.set_inventory_data(inventory_data)
   
   if loaded_data.has("Player"):
     var player_data = loaded_data["Player"]

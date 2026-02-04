@@ -10,7 +10,7 @@ script = ExtResource("1_82hfh")
 [node name="Background" type="ColorRect" parent="." unique_id=1793442950]
 offset_right = 2550.0
 offset_bottom = 1440.0
-color = Color(0.36165226, 0.413972, 0.34024632, 1)
+color = Color(0.28389195, 0.55112636, 0.3028017, 1)
 metadata/_edit_lock_ = true
 
 [node name="MenuArea" type="ColorRect" parent="." unique_id=871200997]
@@ -31,19 +31,19 @@ text = "-"
 horizontal_alignment = 2
 
 [node name="MovelistMenu" type="VBoxContainer" parent="." unique_id=1027300460]
-custom_minimum_size = Vector2(800, 1000)
+custom_minimum_size = Vector2(800, 500)
 offset_left = 65.0
 offset_top = 901.0
 offset_right = 865.0
-offset_bottom = 1901.0
+offset_bottom = 1401.0
 script = ExtResource("2_ehys6")
 
 [node name="TargetMenu" type="VBoxContainer" parent="." unique_id=817664230]
 custom_minimum_size = Vector2(800, 500)
 offset_left = 961.0
-offset_top = 889.0
+offset_top = 903.0
 offset_right = 1761.0
-offset_bottom = 1389.0
+offset_bottom = 1403.0
 script = ExtResource("3_8gp2o")
 
 [node name="CurrentPhaseLabel" type="Label" parent="." unique_id=1408976960]

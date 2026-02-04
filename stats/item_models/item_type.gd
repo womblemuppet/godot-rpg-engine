@@ -9,6 +9,4 @@ extends Resource
 @export var expires_start_health: bool
 @export var attack: int
 @export var armour: int
-
-
-#inventory grid
+@export var inventory_sprite: Texture

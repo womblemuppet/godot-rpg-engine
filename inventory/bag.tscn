@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b5wwyqo22qg4q"]
+
+[ext_resource type="Script" uid="uid://dlw0808m6q7s7" path="res://inventory/bag.gd" id="1_e620b"]
+
+[node name="Bag" type="ColorRect" unique_id=1277104560]
+offset_right = 960.0
+offset_bottom = 960.0
+color = Color(0.7663776, 0.43201926, 0.31629232, 1)
+script = ExtResource("1_e620b")

@@ -15,11 +15,14 @@ func _input(_event):
 func set_inventory_page(p_inventory_page):
   inventory_page = p_inventory_page
 
+func set_inventory_data(inventory_data):
+  inventory = inventory_data
+  
+func load_inventory():
+  inventory_page.set_bag_items(inventory)
+
 func get_inventory():
   return inventory
-
-func load_inventory(inventory_data: Array):
-  inventory = inventory_data
 
 func show_inventory():
   inventory_page.visible = true

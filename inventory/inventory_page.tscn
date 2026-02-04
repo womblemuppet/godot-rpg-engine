@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://coxifba0ojaln"]
+
+[ext_resource type="Script" uid="uid://bq7sxn3s8g3dj" path="res://inventory/inventory_page.gd" id="1_26h83"]
+[ext_resource type="PackedScene" uid="uid://b5wwyqo22qg4q" path="res://inventory/bag.tscn" id="2_0cdo5"]
+
+[node name="InventoryPage" type="CanvasLayer" unique_id=2004672793]
+script = ExtResource("1_26h83")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2096632208]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 2400.0
+offset_bottom = 1320.0
+color = Color(0.3043619, 0.2522214, 0.23046455, 1)
+
+[node name="BagLabel" type="Label" parent="." unique_id=2089000205]
+offset_left = 1598.0
+offset_top = 114.0
+offset_right = 2059.0
+offset_bottom = 285.0
+theme_override_font_sizes/font_size = 125
+text = "UR BAG"
+
+[node name="Bag" parent="." unique_id=1277104560 instance=ExtResource("2_0cdo5")]
+offset_left = 1442.0
+offset_top = 290.0
+offset_right = 2162.0
+offset_bottom = 1250.0
