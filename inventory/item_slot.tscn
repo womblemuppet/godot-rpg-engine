@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://40fliknrc3ga"]
+
+[ext_resource type="Script" uid="uid://cdn2a8iobve0j" path="res://inventory/item_slot.gd" id="1_8kgv2"]
+
+[node name="ItemSlot" type="TextureRect" unique_id=526369390]
+offset_right = 150.0
+offset_bottom = 150.0
+expand_mode = 1
+script = ExtResource("1_8kgv2")
+
+[node name="ItemSlotButton" type="Button" parent="." unique_id=593139208]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0

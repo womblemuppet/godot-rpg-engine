@@ -109,6 +109,12 @@ func hold_armour(item: Item, item_slot: ArmourSlot):
 
 func hold_weapon(item: Item, item_slot: WeaponSlot):
   held_weapons[item_slot] = item
+  
+func remove_weapon(item_slot: WeaponSlot):
+  held_weapons[item_slot] = null
+  
+func remove_armour(item_slot: ArmourSlot):
+  held_armour[item_slot] = null
 
 func get_main_weapon():
   return held_weapons.get(WeaponSlot.WEAPON_MAIN)

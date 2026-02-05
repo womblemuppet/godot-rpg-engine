@@ -4,6 +4,8 @@ extends Resource
 @export var id: int
 @export var name: String
 @export var can_equip: bool
+@export var equipable_weapon_slots: Dictionary[Character.WeaponSlot, bool]
+@export var equipable_armour_slots: Dictionary[Character.ArmourSlot, bool]
 @export var can_eat: bool
 @export var expires: bool
 @export var expires_start_health: bool
