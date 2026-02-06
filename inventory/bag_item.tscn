@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ofaj42rgxp0v"]
+
+[ext_resource type="Script" uid="uid://dqo5fo7qvtrpk" path="res://inventory/bag_item.gd" id="1_dm8at"]
+
+[node name="BagItem" type="Button" unique_id=295469045]
+offset_right = 400.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 40
+text = "..."
+alignment = 2
+script = ExtResource("1_dm8at")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1824640370]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+expand_mode = 1
