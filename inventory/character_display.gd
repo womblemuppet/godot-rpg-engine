@@ -1,11 +1,19 @@
 extends ColorRect
 
+signal item_slot_pressed(item_slot, character: Character)
+
 var item_slot_scene = preload("uid://40fliknrc3ga")
+var empty_slot_textures = {
+  "main_weapon_empty_slot": preload("uid://c4rspb3sg4ho5"),
+  "offhand_weapon_empty_slot": preload("uid://dyeeedxqbaw3w"),
+  "top_armour_empty_slot": preload("uid://cb8gimce7bmah"),
+  "bottom_armour_empty_slot": preload("uid://byr3h4054jh8l")
+}
 
 @onready var character_sprite = $CharacterSprite
+@onready var name_label = $NameLabel
 
 var character: Character
-
 var main_weapon_slot: ItemSlot
 var offhand_weapon_slot: ItemSlot
 var top_armour_slot: ItemSlot
@@ -17,14 +25,6 @@ var item_slots = [
   bottom_armour_slot 
 ]
 
-@onready var name_label = $NameLabel
-
-var empty_slot_textures = {
-  "main_weapon_empty_slot": preload("uid://c4rspb3sg4ho5"),
-  "offhand_weapon_empty_slot": preload("uid://dyeeedxqbaw3w"),
-  "top_armour_empty_slot": preload("uid://cb8gimce7bmah"),
-  "bottom_armour_empty_slot": preload("uid://byr3h4054jh8l")
-}
 
 func init(p_character: Character):
   character = p_character
@@ -32,6 +32,10 @@ func init(p_character: Character):
   character_sprite.texture = character.type.fight_sprites["idle"]
   name_label.text = character.type.display_name
   
+  create_item_slots()
+  update_item_slot_items()
+  
+func create_item_slots():
   var item_slot_x = size.x + 10
   var item_slot_height = 160 # with gap
   
@@ -44,7 +48,7 @@ func init(p_character: Character):
   
   offhand_weapon_slot = create_item_slot(
     Vector2(item_slot_x, item_slot_height),
-    "offset_weapon_empty_slot",
+    "offhand_weapon_empty_slot",
     Character.WeaponSlot.WEAPON_OFFHAND,
     null
   )
@@ -62,14 +66,13 @@ func init(p_character: Character):
     null,
     Character.ArmourSlot.ARMOUR_BOTTOM,
   )
-  
-  update_item_slot_items()
 
 func create_item_slot(p_position, empty_slot_texture_name, weapon_slot, armour_slot):
   var new_item_slot = item_slot_scene.instantiate()
   new_item_slot.init(
     p_position,
-    empty_slot_textures["main_weapon_empty_slot"],
+    character,
+    empty_slot_textures[empty_slot_texture_name],
     weapon_slot,
     armour_slot
   )
@@ -101,6 +104,4 @@ func update_item_slot_items():
     bottom_armour_slot.clear()
 
 func on_item_slot_pressed(item_slot):
-  var item = item_slot.item
-  item_slot.unequip.call(character)
-  InventoryManager.add_bag_item(item)
+  item_slot_pressed.emit(item_slot, character)

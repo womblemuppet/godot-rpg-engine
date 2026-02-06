@@ -8,6 +8,7 @@ signal pressed(item_slot)
 var empty_texture: Texture2D
 var is_weapon: bool
 var is_armour: bool
+var character: Character
 var weapon_slot
 var armour_slot
 var item: Item = null
@@ -17,8 +18,9 @@ var unequip: Callable
 func _ready():
   item_slot_button.pressed.connect(on_button_pressed)
 
-func init(p_position, p_empty_texture, p_weapon_slot, p_armour_slot):
+func init(p_position, p_character, p_empty_texture, p_weapon_slot, p_armour_slot):
   position = p_position
+  character = p_character
   empty_texture = p_empty_texture
   texture = empty_texture
   
@@ -29,18 +31,18 @@ func init(p_position, p_empty_texture, p_weapon_slot, p_armour_slot):
   armour_slot = p_armour_slot
   
   if is_weapon:
-    equip = func(character, p_item):
+    equip = func(p_item):
       character.hold_weapon(p_item, weapon_slot)
       set_item(p_item)
-    unequip = func(character):
+    unequip = func():
       character.remove_weapon(weapon_slot)
       clear()
       
   else:
-    equip = func(character, p_item):
+    equip = func(p_item):
       character.hold_armour(p_item, armour_slot)
       set_item(p_item)
-    unequip = func(character):
+    unequip = func():
       character.remove_armour(armour_slot)
       clear()
     

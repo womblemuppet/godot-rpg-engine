@@ -27,7 +27,13 @@ func get_bag_items():
 func add_bag_item(new_item):
   bag_items.push_back(new_item)
   inventory_page.set_bag_items(bag_items)
-
+  
+func remove_bag_item(item):
+  var index = bag_items.find(item)
+  if index > -1:
+    bag_items.remove_at(index)
+  inventory_page.set_bag_items(bag_items)
+  
 func show_inventory():
   inventory_page.visible = true
   
