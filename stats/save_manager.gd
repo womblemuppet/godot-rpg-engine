@@ -29,13 +29,17 @@ func save_game():
     {}
   )
   
+  var inventory_data = InventoryManager.get_bag_items().map(
+    func(item: Item): return item.to_dictionary()
+  )
+  
   var player_data = {
     "x": player.position.x,
     "y": player.position.y,
   }
   
   var other_data = {
-    "Inventory": InventoryManager.get_inventory(),
+    "Inventory": inventory_data,
     "Player": player_data
   }
   
@@ -62,7 +66,16 @@ func load_game():
 
   if loaded_data.has("Inventory"):
     var inventory_data: Array = loaded_data["Inventory"]
-    InventoryManager.set_inventory_data(inventory_data)
+    # assume inventory data only has bag atm
+      
+    var bag_items = inventory_data.map(
+      func(item_data):
+        var new_item = Item.new()
+        new_item.init(item_data)
+        return new_item
+    )
+    
+    InventoryManager.set_inventory_data(bag_items)
   
   if loaded_data.has("Player"):
     var player_data = loaded_data["Player"]

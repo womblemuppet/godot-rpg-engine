@@ -21,8 +21,12 @@ func set_inventory_data(inventory_data):
 func load_inventory():
   inventory_page.set_bag_items(bag_items)
 
-func get_inventory():
+func get_bag_items():
   return bag_items
+
+func add_bag_item(new_item):
+  bag_items.push_back(new_item)
+  inventory_page.set_bag_items(bag_items)
 
 func show_inventory():
   inventory_page.visible = true

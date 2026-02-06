@@ -101,5 +101,6 @@ func update_item_slot_items():
     bottom_armour_slot.clear()
 
 func on_item_slot_pressed(item_slot):
-  pass
-  #item_slot.clear()
+  var item = item_slot.item
+  item_slot.unequip.call(character)
+  InventoryManager.add_bag_item(item)

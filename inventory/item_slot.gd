@@ -11,6 +11,8 @@ var is_armour: bool
 var weapon_slot
 var armour_slot
 var item: Item = null
+var equip: Callable
+var unequip: Callable
 
 func _ready():
   item_slot_button.pressed.connect(on_button_pressed)
@@ -20,12 +22,28 @@ func init(p_position, p_empty_texture, p_weapon_slot, p_armour_slot):
   empty_texture = p_empty_texture
   texture = empty_texture
   
-  is_weapon = p_weapon_slot == null
-  is_armour = p_armour_slot == null
+  is_weapon = p_weapon_slot != null
+  is_armour = p_armour_slot != null
   
   weapon_slot = p_weapon_slot
   armour_slot = p_armour_slot
-
+  
+  if is_weapon:
+    equip = func(character, p_item):
+      character.hold_weapon(p_item, weapon_slot)
+      set_item(p_item)
+    unequip = func(character):
+      character.remove_weapon(weapon_slot)
+      clear()
+      
+  else:
+    equip = func(character, p_item):
+      character.hold_armour(p_item, armour_slot)
+      set_item(p_item)
+    unequip = func(character):
+      character.remove_armour(armour_slot)
+      clear()
+    
 func set_item(p_item: Item):
   item = p_item
   texture = item.type.inventory_sprite
