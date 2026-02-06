@@ -7,6 +7,9 @@
 script = ExtResource("1_pwook")
 name = "Big Sword"
 can_equip = true
+equipable_weapon_slots = Dictionary[int, bool]({
+0: true
+})
 attack = 10
 inventory_sprite = ExtResource("1_d2ac5")
 metadata/_custom_type_script = "uid://dsycxqxhc82si"

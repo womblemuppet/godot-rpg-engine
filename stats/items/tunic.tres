@@ -8,6 +8,9 @@ script = ExtResource("2_ylop1")
 id = 1
 name = "Tunic"
 can_equip = true
+equipable_armour_slots = Dictionary[int, bool]({
+0: true
+})
 armour = 10
 inventory_sprite = ExtResource("1_v7ush")
 metadata/_custom_type_script = "uid://dsycxqxhc82si"

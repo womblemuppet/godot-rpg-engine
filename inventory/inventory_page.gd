@@ -40,9 +40,21 @@ func on_bag_item_pressed(bag_item):
 func on_character_item_slot_pressed(item_slot, character):
   if selected_bag_item:
     var item: Item = selected_bag_item.item
-    item_slot.equip.call(item)
+    var item_type: ItemType = item.type
+    
     clear_selected_bag_item()
-    InventoryManager.remove_bag_item(item)
+    
+    var can_equip = false
+    if item_slot.is_armour:
+      var item_armour_slot: Character.ArmourSlot = item_slot.armour_slot
+      can_equip = item_type.equipable_armour_slots.get(item_armour_slot)
+    if item_slot.is_weapon:
+      var item_weapon_slot: Character.WeaponSlot = item_slot.weapon_slot
+      can_equip = item_type.equipable_weapon_slots.get(item_weapon_slot)
+      
+    if can_equip:
+      item_slot.equip.call(item)
+      InventoryManager.remove_bag_item(item)
   else:
     var item = item_slot.item
     item_slot.unequip.call()
